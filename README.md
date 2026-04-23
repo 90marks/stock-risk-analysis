@@ -1,47 +1,54 @@
 # Stock Risk and Return Analysis
-A Python-based project analyzing the relationship between stock returns and risk using real market data.
+This project uses Python to analyze stock performance based on return and risk using real financial data from WRDS. It focuses on helping users compare different stocks and understand how risk and return are related.
 
 ## 1. Problem & Target User
-This project aims to help beginner investors understand how to evaluate stocks based on both return and risk, rather than focusing only on price changes.
+This project aims to help users understand how to evaluate stock performance using both return and risk, rather than relying only on price movements.
 
-The target users are beginner investors, especially university students who are new to stock investing.
+The target users are university students who have some basic knowledge of finance but find it difficult to apply it in practice, as well as beginners who have little or no prior knowledge of financial analysis.
+
 
 ## 2. Data
-The dataset contains daily adjusted closing prices for 10 major technology companies over a one-year period.
+The dataset contains daily stock price data for 10 major technology companies over a one-year period.
 
-- Source: Yahoo Finance
-- Access date: 18 April 2026
-- Key fields: Date (index), Adjusted closing prices for 10 stocks (AAPL, MSFT, NVDA, TSLA, AMZN, GOOGL, META, NFLX, AMD, INTC)
+- Source: WRDS – CRSP database  
+- Access method: Python connection using a WRDS account  
+- Access date: 22 April  2026  
 
-The data is stored locally as a CSV file and represents real historical market data.
+Key fields:
+- date: trading date  
+- permno: stock identifier  
+- prc: stock price  
+
+The selected companies include large technology firms such as AAPL, MSFT, NVDA, TSLA, AMZN, GOOGL, META, NFLX, AMD, and INTC.
+
 
 ## 3. Methods
-The analysis is conducted using Python with the following steps:
+The analysis is implemented as a reusable Python function, allowing flexible user input.
 
-- Load stock price data from CSV file
-- Clean data and check for missing values
-- Calculate daily returns using percentage change (pct_change)
-- Compute average returns for each stock
-- Measure volatility (risk) using standard deviation of daily returns
-- Calculate Sharpe ratio to evaluate risk-adjusted performance
-- Visualize price trends and risk-return relationship
-- Rank stocks based on return, risk, and Sharpe ratio
+Main steps:
+• Connect to WRDS using a user-provided username  
+• Retrieve stock price data based on selected tickers  
+• Convert data into a structured time-series format  
+• Calculate daily returns using percentage change (pct_change)  
+• Compute key performance metrics:
+  - Average return  
+  - Volatility (standard deviation of returns)  
+  - Sharpe ratio (risk-adjusted return)  
+• Visualize results using different plots  
 
-These steps allow for a comprehensive comparison of stock performance from both return and risk perspectives.
+This structure makes the analysis more flexible, as users can easily change inputs such as tickers and time period without modifying the main logic of the code.
 
 ## 4. Key Findings
-- Stock price trends vary significantly across companies, reflecting differences in growth potential and market performance
-- A clear positive relationship between risk and return is observed, indicating that higher returns generally come with higher volatility
-- Some stocks (e.g., large-cap firms) exhibit more stable performance with relatively lower risk
-- High-growth stocks tend to show both higher returns and higher fluctuations
-- Investors should balance risk and return rather than focusing solely on maximizing returns
-- For example, some stocks achieve higher returns but also exhibit higher volatility in the risk-return analysis plot
-- Risk-adjusted performance (measured by the Sharpe ratio) provides a more comprehensive evaluation of stock attractiveness
+- Stock performance differs noticeably across companies, suggesting that firm-specific factors play an important role beyond general market trends
+- A positive relationship between risk and return is generally observed, but the strength of this relationship varies across different stocks
+- Some stocks achieve higher returns but also exhibit significantly higher volatility, indicating less stable performance
+- Stocks with moderate returns and lower volatility tend to provide more consistent performance over time
+- The Sharpe ratio shows that higher returns do not always imply better performance when risk is taken into account
 
 ## 5. How to Run
 1. Install required libraries:
    ```
-   pip install pandas numpy matplotlib yfinance
+   pip install pandas numpy matplotlib wrds
    ```
 2. Download or clone this repository
 
@@ -53,19 +60,17 @@ ACC102_Stock_Risk_Return_Analysis.ipynb
 ## 6. Demo / Output
 
 The project produces the following outputs:
-
 - Stock price trend visualization over time
 - Daily return calculations for each stock
-- Risk vs Return scatter plot
+- Cumulative return comparison across stocks
 - Stock ranking based on return, risk, and Sharpe ratio
-
 These outputs can be viewed directly in the Jupyter Notebook after running the code.
 
 ## 7. Limitations & Future Improvements
-- The analysis only considers historical price data and does not include macroeconomic factors
-- Only 10 stocks are analyzed, which may limit generalizability
+- The analysis is based only on historical price data and does not include macroeconomic or firm-specific factors
+- Only 10 stocks are analyzed, which may limit the generalizability of the results
 - Future work could include:
-- More industries or stocks
-- Portfolio optimization
-- Inclusion of financial indicators
-- Use of additional risk-adjusted metrics
+- Expanding the number of stocks or industries
+- Applying portfolio optimization techniques
+- Incorporating additional financial indicators
+- Using more advanced risk-adjusted performance measures
