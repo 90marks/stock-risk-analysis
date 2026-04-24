@@ -34,7 +34,7 @@ Main steps:
   - Average return  
   - Volatility (standard deviation of returns)  
   - Sharpe ratio (risk-adjusted return)  
-• Visualize results using different plots  
+  - Visualize results using different plots  
 
 This structure makes the analysis more flexible, as users can easily change inputs such as tickers and time period without modifying the main logic of the code.
 
