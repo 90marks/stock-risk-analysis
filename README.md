@@ -47,14 +47,11 @@ This structure makes the analysis more flexible, as users can easily change inpu
 
 ## 5. How to Run
 1. Install required libraries:
-   ```
-   pip install pandas numpy matplotlib wrds
-   ```
+
+```bash
+pip install pandas numpy matplotlib wrds
 2. Download or clone this repository
-
-3. Open the Jupyter Notebook:
-ACC102_Stock_Risk_Return_Analysis.ipynb
-
+3. Open the Jupyter Notebook `ACC102_Stock_Risk_Return_Analysis.ipynb`
 4. Run all cells to reproduce the analysis
 
 ## 6. Demo / Output
